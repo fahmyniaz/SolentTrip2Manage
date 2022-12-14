@@ -54,15 +54,15 @@ class AdministratorPage:
         GLabel_587["font"] = ft
         GLabel_587["fg"] = "#008080"
         GLabel_587["justify"] = "center"
-        GLabel_587["text"] = "Choose Manager"
-        GLabel_587.place(x=30, y=70, width=100, height=30)
+        GLabel_587["text"] = "Manager"
+        GLabel_587.place(x=200, y=70, width=160, height=30)
 
         self.combo_select_manager = ttk.Combobox(figure,
                                                  state="readonly",
                                                  values=list(self.MANAGERS.keys()),
                                                  textvariable=tk.StringVar())
         self.combo_select_manager.grid(column=1, row=5)
-        self.combo_select_manager.place(x=140, y=70, width=176, height=30)
+        self.combo_select_manager.place(x=350, y=70, width=176, height=30)
         self.combo_select_manager.current(0)
 
         GLabel_564 = tk.Label(figure)
@@ -71,7 +71,7 @@ class AdministratorPage:
         GLabel_564["fg"] = "#008080"
         GLabel_564["justify"] = "center"
         GLabel_564["text"] = "Name"
-        GLabel_564.place(x=30, y=110, width=100, height=30)
+        GLabel_564.place(x=260, y=110, width=100, height=30)
 
         self.edit_manager_name = tk.Entry(figure)
         self.edit_manager_name["borderwidth"] = "1px"
@@ -80,7 +80,7 @@ class AdministratorPage:
         self.edit_manager_name["fg"] = "#008080"
         self.edit_manager_name["justify"] = "left"
         self.edit_manager_name["text"] = ""
-        self.edit_manager_name.place(x=140, y=110, width=176, height=30)
+        self.edit_manager_name.place(x=350, y=110, width=176, height=30)
 
         GLabel_377 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
@@ -88,7 +88,7 @@ class AdministratorPage:
         GLabel_377["fg"] = "#008080"
         GLabel_377["justify"] = "center"
         GLabel_377["text"] = "Password"
-        GLabel_377.place(x=30, y=150, width=100, height=30)
+        GLabel_377.place(x=250, y=150, width=100, height=30)
 
         self.edit_manager_contact = tk.Entry(figure)
         self.edit_manager_contact["borderwidth"] = "1px"
@@ -97,7 +97,7 @@ class AdministratorPage:
         self.edit_manager_contact["fg"] = "#008080"
         self.edit_manager_contact["justify"] = "left"
         self.edit_manager_contact["text"] = ""
-        self.edit_manager_contact.place(x=140, y=150, width=176, height=30)
+        self.edit_manager_contact.place(x=350, y=150, width=176, height=30)
 
         btn_manager_view = tk.Button(figure)
         btn_manager_view["bg"] = "#efefef"
@@ -106,7 +106,7 @@ class AdministratorPage:
         btn_manager_view["fg"] = "#008080"
         btn_manager_view["justify"] = "center"
         btn_manager_view["text"] = "Manager Access"
-        btn_manager_view.place(x=140, y=190, width=176, height=30)
+        btn_manager_view.place(x=250, y=230, width=176, height=30)
         btn_manager_view["command"] = lambda: self.btnOpenManagerHandler(figure, username, contact)
 
         btn_coordinator_view = tk.Button(figure)
@@ -116,7 +116,7 @@ class AdministratorPage:
         btn_coordinator_view["fg"] = "#008080"
         btn_coordinator_view["justify"] = "center"
         btn_coordinator_view["text"] = "Coordinator Access"
-        btn_coordinator_view.place(x=140, y=230, width=176, height=30)
+        btn_coordinator_view.place(x=450, y=230, width=176, height=30)
         btn_coordinator_view["command"] = lambda: self.btnOpenCoordinatorHandler(figure, username, contact)
 
         btn_add_manager = tk.Button(figure)
@@ -149,15 +149,6 @@ class AdministratorPage:
         btn_delete_manager.place(x=510, y=300, width=150, height=30)
         btn_delete_manager["command"] = self.btnDeleteManagerHandler
 
-        btn_print_invoice = tk.Button(figure)
-        btn_print_invoice["bg"] = "Green"
-        ft = tkf.Font(family='Times', size=14)
-        btn_print_invoice["font"] = ft
-        btn_print_invoice["fg"] = "White"
-        btn_print_invoice["justify"] = "center"
-        btn_print_invoice["text"] = "Print Receipt"
-        btn_print_invoice.place(x=580, y=350, width=180, height=50)
-        btn_print_invoice["command"] = self.btnInvoicePrinter
 
     def btnOpenManagerHandler(self, figure, username, contact):
         managerFigure = tk.Toplevel(figure)
