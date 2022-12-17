@@ -40,8 +40,8 @@ class TripManagerPage:
         figure.title("Trip Management")
 
         # setting window size
-        width = 1200
-        height = 600
+        width = 1000
+        height = 450
         screenwidth = figure.winfo_screenwidth()
         screenheight = figure.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
@@ -54,7 +54,7 @@ class TripManagerPage:
         GLabel_654["fg"] = "#333333"
         GLabel_654["justify"] = "left"
         GLabel_654["text"] = "Trip Management"
-        GLabel_654.place(x=5, y=5, width=175, height=33)
+        GLabel_654.place(x=100, y=5, width=175, height=33)
 
         GLabel_515 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
@@ -176,7 +176,7 @@ class TripManagerPage:
         GLabel_955["fg"] = "#333333"
         GLabel_955["justify"] = "left"
         GLabel_955["text"] = "Coordinator Management"
-        GLabel_955.place(x=600, y=5, width=250, height=33)
+        GLabel_955.place(x=650, y=5, width=250, height=33)
 
         GLabel_587 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
@@ -229,43 +229,43 @@ class TripManagerPage:
         self.edit_coordinator_contact.place(x=750, y=140, width=176, height=30)
 
         btn_add_coordinator = tk.Button(figure)
-        btn_add_coordinator["bg"] = "#efefef"
+        btn_add_coordinator["bg"] = "green"
         ft = tkf.Font(family='Arial', size=12)
         btn_add_coordinator["font"] = ft
-        btn_add_coordinator["fg"] = "#000000"
+        btn_add_coordinator["fg"] = "#ffffff"
         btn_add_coordinator["justify"] = "center"
         btn_add_coordinator["text"] = "Add Coordinator"
-        btn_add_coordinator.place(x=440, y=370, width=120, height=30)
+        btn_add_coordinator.place(x=615, y=200, width=150, height=50)
         btn_add_coordinator["command"] = self.btnAddCoordinatorHandler
 
         btn_update_coordinator = tk.Button(figure)
-        btn_update_coordinator["bg"] = "#efefef"
+        btn_update_coordinator["bg"] = "blue"
         ft = tkf.Font(family='Arial', size=12)
         btn_update_coordinator["font"] = ft
-        btn_update_coordinator["fg"] = "#000000"
+        btn_update_coordinator["fg"] = "#ffffff"
         btn_update_coordinator["justify"] = "center"
         btn_update_coordinator["text"] = "Update Coordinator"
-        btn_update_coordinator.place(x=440, y=410, width=120, height=30)
+        btn_update_coordinator.place(x=785, y=200, width=150, height=50)
         btn_update_coordinator["command"] = self.btnUpdateCoordinatorHandler
 
         btn_delete_coordinator = tk.Button(figure)
-        btn_delete_coordinator["bg"] = "#efefef"
+        btn_delete_coordinator["bg"] = "red"
         ft = tkf.Font(family='Arial', size=12)
         btn_delete_coordinator["font"] = ft
-        btn_delete_coordinator["fg"] = "#000000"
+        btn_delete_coordinator["fg"] = "#ffffff"
         btn_delete_coordinator["justify"] = "center"
         btn_delete_coordinator["text"] = "Delete Coordinator"
-        btn_delete_coordinator.place(x=440, y=450, width=120, height=30)
+        btn_delete_coordinator.place(x=700, y=270, width=150, height=50)
         btn_delete_coordinator["command"] = self.btnDeleteCoordinatorHandler
 
         btn_print_invoice = tk.Button(figure)
-        btn_print_invoice["bg"] = "#efefef"
-        ft = tkf.Font(family='Arial', size=12)
+        btn_print_invoice["bg"] = "green"
+        ft = tkf.Font(family='Arial', size=16)
         btn_print_invoice["font"] = ft
-        btn_print_invoice["fg"] = "#000000"
+        btn_print_invoice["fg"] = "#ffffff"
         btn_print_invoice["justify"] = "center"
         btn_print_invoice["text"] = "Print Invoice"
-        btn_print_invoice.place(x=210, y=540, width=180, height=30)
+        btn_print_invoice.place(x=620, y=360, width=320, height=60)
         btn_print_invoice["command"] = self.btnInvoicePrinter
 
     def btnAddTripHandler(self):
