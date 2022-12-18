@@ -16,7 +16,6 @@ class App:
         # setting title
         figure.title("Solent Trip Main Page")
         figure["bg"] = "#e3e8cd"
-        # setting window size
         width = 850
         height = 250
         screenwidth = figure.winfo_screenwidth()
@@ -37,11 +36,11 @@ class App:
         btn_admin = tk.Button(figure)
         btn_admin["activebackground"] = "#57ef57"
         btn_admin["anchor"] = "center"
-        btn_admin["bg"] = "#90ee90"
+        btn_admin["bg"] = "#008080"
         btn_admin["bd"] = 1
         ft = tkf.Font(family='Times', size=22)
         btn_admin["font"] = ft
-        btn_admin["fg"] = "#000000"
+        btn_admin["fg"] = "#ffffff"
         btn_admin["justify"] = "center"
         btn_admin["text"] = "Admin"
         btn_admin.place(x=20, y=100, width=270, height=100)
@@ -50,11 +49,11 @@ class App:
         btn_manager = tk.Button(figure)
         btn_manager["activebackground"] = "#57ef57"
         btn_manager["anchor"] = "center"
-        btn_manager["bg"] = "#90ee90"
+        btn_manager["bg"] = "#008080"
         btn_manager["bd"] = 1
         ft = tkf.Font(family='Times', size=22)
         btn_manager["font"] = ft
-        btn_manager["fg"] = "#000000"
+        btn_manager["fg"] = "#ffffff"
         btn_manager["justify"] = "center"
         btn_manager["text"] = "Manager"
         btn_manager.place(x=300, y=100, width=250, height=100)
@@ -63,11 +62,11 @@ class App:
         btn_coordinator = tk.Button(figure)
         btn_coordinator["activebackground"] = "#57ef57"
         btn_coordinator["anchor"] = "center"
-        btn_coordinator["bg"] = "#90ee90"
+        btn_coordinator["bg"] = "#008080"
         btn_coordinator["bd"] = 1
         ft = tkf.Font(family='Times', size=22)
         btn_coordinator["font"] = ft
-        btn_coordinator["fg"] = "#000000"
+        btn_coordinator["fg"] = "#ffffff"
         btn_coordinator["justify"] = "center"
         btn_coordinator["text"] = "Coordinator"
         btn_coordinator.place(x=560, y=100, width=250, height=100)

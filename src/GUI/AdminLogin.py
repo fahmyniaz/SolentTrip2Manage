@@ -14,7 +14,7 @@ class AdminLogin:
         # setting title
         figure.title("Login Page")
         # setting window size
-        figure["bg"] = "#e3e8cd"
+        figure["bg"] = "#d7fcb8"
         width = 750
         height = 450
         screenwidth = figure.winfo_screenwidth()
@@ -24,7 +24,7 @@ class AdminLogin:
         figure.resizable(width=False, height=False)
 
         title = tk.Label(figure)
-        title["bg"] = "#e3e8cd"
+        title["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=22)
         title["font"] = ft
         title["fg"] = "cyan4"
@@ -33,7 +33,7 @@ class AdminLogin:
         title.place(x=0, y=0, width=width, height=52)
 
         lb_username = tk.Label(figure)
-        lb_username["bg"] = "#e3e8cd"
+        lb_username["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
         lb_username["font"] = ft
         lb_username["fg"] = "#000000"
@@ -53,7 +53,7 @@ class AdminLogin:
         self.edit_username.place(x=250, y=110, width=250, height=40)
 
         lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#e3e8cd"
+        lb_contact["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
         lb_contact["font"] = ft
         lb_contact["fg"] = "#000000"
@@ -81,26 +81,26 @@ class AdminLogin:
         btn_login["relief"] = tk.GROOVE
         ft = tkf.Font(family='Arial', size=15)
         btn_login["font"] = ft
-        btn_login["fg"] = "#000000"
+        btn_login["fg"] = "#FFFFFF"
         btn_login["justify"] = "center"
         btn_login["text"] = "LOGIN"
         btn_login.place(x=280, y=280, width=180, height=40)
         btn_login["command"] = lambda: self.btnLoginHandler(figure)
 
         lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#e3e8cd"
+        lb_contact["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
         lb_contact["font"] = ft
         lb_contact["fg"] = "#000000"
         lb_contact["justify"] = "center"
-        lb_contact["text"] = "UN - admin / PW - pw1234"
-        lb_contact.place(x=210, y=350, width=300, height=40)
+        lb_contact["text"] = "Username - admin / Password - pw1234"
+        lb_contact.place(x=180, y=350, width=400, height=40)
 
         lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#e3e8cd"
-        ft = tkf.Font(family='Arial', size=14, weight="normal")
+        lb_contact["bg"] = "#d7fcb8"
+        ft = tkf.Font(family='Arial', size=13, weight="normal")
         lb_contact["font"] = ft
-        lb_contact["fg"] = "#000000"
+        lb_contact["fg"] = "red"
         lb_contact["justify"] = "center"
         lb_contact["text"] = "Please make sure you enter the correct password to open the next window."
         lb_contact.place(x=0, y=390, width=800, height=40)
