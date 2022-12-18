@@ -11,7 +11,7 @@ class TripCoordinatorPage:
 
     def __init__(self, figure, username, contact):
 
-        self.TRIPS = {"+ Add New": None}
+        self.TRIPS = {"+ Create Trip": None}
         self.PASSENGERS = {}
 
         # user
@@ -130,20 +130,20 @@ class TripCoordinatorPage:
         self.edit_trip_contact.place(x=100, y=190, width=176, height=30)
 
         btn_add_trip = tk.Button(figure)
-        btn_add_trip["bg"] = "#efefef"
+        btn_add_trip["bg"] = "green"
         ft = tkf.Font(family='Arial', size=12)
         btn_add_trip["font"] = ft
-        btn_add_trip["fg"] = "#000000"
+        btn_add_trip["fg"] = "#FFFFFF"
         btn_add_trip["justify"] = "center"
         btn_add_trip["text"] = "Add Trip"
         btn_add_trip.place(x=70, y=250, width=70, height=30)
         btn_add_trip["command"] = self.btnAddTripHandler
 
         btn_update_trip = tk.Button(figure)
-        btn_update_trip["bg"] = "#efefef"
+        btn_update_trip["bg"] = "blue"
         ft = tkf.Font(family='Arial', size=12)
         btn_update_trip["font"] = ft
-        btn_update_trip["fg"] = "#000000"
+        btn_update_trip["fg"] = "#FFFFFF"
         btn_update_trip["justify"] = "center"
         btn_update_trip["text"] = "Update"
         btn_update_trip.place(x=180, y=250, width=70, height=30)
@@ -230,10 +230,10 @@ class TripCoordinatorPage:
         self.combo_tp_mode.current(0)
 
         btn_add_trip_leg = tk.Button(figure)
-        btn_add_trip_leg["bg"] = "#efefef"
+        btn_add_trip_leg["bg"] = "green"
         ft = tkf.Font(family='Arial', size=12)
         btn_add_trip_leg["font"] = ft
-        btn_add_trip_leg["fg"] = "#000000"
+        btn_add_trip_leg["fg"] = "#ffffff"
         btn_add_trip_leg["justify"] = "center"
         btn_add_trip_leg["text"] = "Add Trip Leg"
         btn_add_trip_leg.place(x=390, y=250, width=200, height=30)
@@ -359,10 +359,10 @@ class TripCoordinatorPage:
 
 
         btn_add_passenger = tk.Button(figure)
-        btn_add_passenger["bg"] = "#efefef"
+        btn_add_passenger["bg"] = "green"
         ft = tkf.Font(family='Arial', size=12)
         btn_add_passenger["font"] = ft
-        btn_add_passenger["fg"] = "#000000"
+        btn_add_passenger["fg"] = "#FFFFFF"
         btn_add_passenger["justify"] = "center"
         btn_add_passenger["text"] = "Add Passenger"
         btn_add_passenger.place(x=750, y=340, width=180, height=30)
@@ -375,44 +375,44 @@ class TripCoordinatorPage:
         GLabel_823["fg"] = "#333333"
         GLabel_823["justify"] = "center"
         GLabel_823["text"] = "Select Passenger"
-        GLabel_823.place(x=10, y=360, width=130, height=30)
+        GLabel_823.place(x=10, y=340, width=130, height=30)
 
         self.combo_select_passenger = ttk.Combobox(figure,
                                                    state="readonly",
                                                    values=list(self.PASSENGERS.keys()),
                                                    textvariable=tk.StringVar())
         self.combo_select_passenger.grid(column=1, row=5)
-        self.combo_select_passenger.place(x=150, y=360, width=230, height=30)
+        self.combo_select_passenger.place(x=150, y=340, width=230, height=30)
         self.combo_select_passenger.current()
 
         btn_update_passenger = tk.Button(figure)
-        btn_update_passenger["bg"] = "#efefef"
+        btn_update_passenger["bg"] = "blue"
         ft = tkf.Font(family='Arial', size=12)
         btn_update_passenger["font"] = ft
-        btn_update_passenger["fg"] = "#000000"
+        btn_update_passenger["fg"] = "#FFFFFF"
         btn_update_passenger["justify"] = "center"
         btn_update_passenger["text"] = "Update Passenger"
-        btn_update_passenger.place(x=400, y=360, width=150, height=30)
+        btn_update_passenger.place(x=400, y=340, width=150, height=30)
         btn_update_passenger["command"] = self.btnUpdatePassengerHandler
 
         btn_print_Info = tk.Button(figure)
-        btn_print_Info["bg"] = "#efefef"
-        ft = tkf.Font(family='Arial', size=12)
+        btn_print_Info["bg"] = "#1c802e"
+        ft = tkf.Font(family='Arial', size=14)
         btn_print_Info["font"] = ft
-        btn_print_Info["fg"] = "#000000"
+        btn_print_Info["fg"] = "#ffffff"
         btn_print_Info["justify"] = "center"
         btn_print_Info["text"] = "Print Trip Info"
-        btn_print_Info.place(x=60, y=300, width=180, height=30)
+        btn_print_Info.place(x=580, y=390, width=180, height=50)
         btn_print_Info["command"] = self.btnItineraryPrinter
 
         btn_print_invoice = tk.Button(figure)
-        btn_print_invoice["bg"] = "#efefef"
-        ft = tkf.Font(family='Arial', size=12)
+        btn_print_invoice["bg"] = "#1c802e"
+        ft = tkf.Font(family='Arial', size=14)
         btn_print_invoice["font"] = ft
-        btn_print_invoice["fg"] = "#000000"
+        btn_print_invoice["fg"] = "#ffffff"
         btn_print_invoice["justify"] = "center"
         btn_print_invoice["text"] = "Print Invoice"
-        btn_print_invoice.place(x=390, y=300, width=180, height=30)
+        btn_print_invoice.place(x=800, y=390, width=180, height=50)
         btn_print_invoice["command"] = self.btnInvoicePrinter
 
     def btnAddTripHandler(self):
