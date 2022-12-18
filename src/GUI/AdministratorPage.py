@@ -34,6 +34,7 @@ class AdministratorPage:
         figure.title("Admin")
 
         # setting window size
+        figure["bg"] = "#e3e8cd"
         width = 800
         height = 400
         screenwidth = figure.winfo_screenwidth()
@@ -44,18 +45,20 @@ class AdministratorPage:
 
         TitleLabel = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=18)
+        TitleLabel["bg"] = "#e3e8cd"
         TitleLabel["font"] = ft
-        TitleLabel["fg"] = "#800000"
+        TitleLabel["fg"] = "black"
         TitleLabel["text"] = "Manage Trip Page"
         TitleLabel.place(x=300, y=20, width=218, height=30)
 
         GLabel_587 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_587["bg"] = "#e3e8cd"
         GLabel_587["font"] = ft
-        GLabel_587["fg"] = "#008080"
+        GLabel_587["fg"] = "black"
         GLabel_587["justify"] = "center"
         GLabel_587["text"] = "Manager"
-        GLabel_587.place(x=200, y=70, width=160, height=30)
+        GLabel_587.place(x=215, y=70, width=160, height=30)
 
         self.combo_select_manager = ttk.Combobox(figure,
                                                  state="readonly",
@@ -67,11 +70,12 @@ class AdministratorPage:
 
         GLabel_564 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_564["bg"] = "#e3e8cd"
         GLabel_564["font"] = ft
-        GLabel_564["fg"] = "#008080"
+        GLabel_564["fg"] = "black"
         GLabel_564["justify"] = "center"
         GLabel_564["text"] = "Name"
-        GLabel_564.place(x=260, y=110, width=100, height=30)
+        GLabel_564.place(x=235, y=110, width=100, height=30)
 
         self.edit_manager_name = tk.Entry(figure)
         self.edit_manager_name["borderwidth"] = "1px"
@@ -84,8 +88,9 @@ class AdministratorPage:
 
         GLabel_377 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_377["bg"] = "#e3e8cd"
         GLabel_377["font"] = ft
-        GLabel_377["fg"] = "#008080"
+        GLabel_377["fg"] = "black"
         GLabel_377["justify"] = "center"
         GLabel_377["text"] = "Password"
         GLabel_377.place(x=250, y=150, width=100, height=30)
@@ -120,30 +125,30 @@ class AdministratorPage:
         btn_coordinator_view["command"] = lambda: self.btnOpenCoordinatorHandler(figure, username, contact)
 
         btn_add_manager = tk.Button(figure)
-        btn_add_manager["bg"] = "#FFFFFF"
+        btn_add_manager["bg"] = "green"
         ft = tkf.Font(family='Arial', size=12)
         btn_add_manager["font"] = ft
-        btn_add_manager["fg"] = "Green"
+        btn_add_manager["fg"] = "#FFFFFF"
         btn_add_manager["justify"] = "center"
         btn_add_manager["text"] = "Create Manager"
         btn_add_manager.place(x=150, y=300, width=150, height=30)
         btn_add_manager["command"] = self.btnAddManagerHandler
 
         btn_update_manager = tk.Button(figure)
-        btn_update_manager["bg"] = "#FFFFFF"
+        btn_update_manager["bg"] = "blue"
         ft = tkf.Font(family='Arial', size=12)
         btn_update_manager["font"] = ft
-        btn_update_manager["fg"] = "Blue"
+        btn_update_manager["fg"] = "#FFFFFF"
         btn_update_manager["justify"] = "center"
         btn_update_manager["text"] = "Update Manager"
         btn_update_manager.place(x=330, y=300, width=150, height=30)
         btn_update_manager["command"] = self.btnUpdateManagerHandler
 
         btn_delete_manager = tk.Button(figure)
-        btn_delete_manager["bg"] = "#FFFFFF"
+        btn_delete_manager["bg"] = "red"
         ft = tkf.Font(family='Arial', size=12)
         btn_delete_manager["font"] = ft
-        btn_delete_manager["fg"] = "Red"
+        btn_delete_manager["fg"] = "#FFFFFF"
         btn_delete_manager["justify"] = "center"
         btn_delete_manager["text"] = "Delete Manager"
         btn_delete_manager.place(x=510, y=300, width=150, height=30)

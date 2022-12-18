@@ -40,6 +40,7 @@ class TripManagerPage:
         figure.title("Trip Management")
 
         # setting window size
+        figure["bg"] = "#e3e8cd"
         width = 1000
         height = 450
         screenwidth = figure.winfo_screenwidth()
@@ -49,15 +50,17 @@ class TripManagerPage:
         figure.resizable(width=False, height=False)
 
         GLabel_654 = tk.Label(figure)
-        ft = tkf.Font(family='Arial', size=16)
+        ft = tkf.Font(family='Arial', size=18)
+        GLabel_654["bg"] = "#e3e8cd"
         GLabel_654["font"] = ft
         GLabel_654["fg"] = "#333333"
         GLabel_654["justify"] = "left"
         GLabel_654["text"] = "Trip Management"
-        GLabel_654.place(x=100, y=5, width=175, height=33)
+        GLabel_654.place(x=20, y=5, width=350, height=33)
 
         GLabel_515 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_515["bg"] = "#e3e8cd"
         GLabel_515["font"] = ft
         GLabel_515["fg"] = "#333333"
         GLabel_515["justify"] = "center"
@@ -74,6 +77,7 @@ class TripManagerPage:
 
         GLabel_230 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_230["bg"] = "#e3e8cd"
         GLabel_230["font"] = ft
         GLabel_230["fg"] = "#333333"
         GLabel_230["justify"] = "center"
@@ -91,6 +95,7 @@ class TripManagerPage:
 
         GLabel_766 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_766["bg"] = "#e3e8cd"
         GLabel_766["font"] = ft
         GLabel_766["fg"] = "#333333"
         GLabel_766["justify"] = "center"
@@ -108,6 +113,7 @@ class TripManagerPage:
 
         GLabel_trip_contact = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_trip_contact["bg"] = "#e3e8cd"
         GLabel_trip_contact["font"] = ft
         GLabel_trip_contact["fg"] = "#333333"
         GLabel_trip_contact["justify"] = "center"
@@ -125,6 +131,7 @@ class TripManagerPage:
 
         GLabel_515 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_515["bg"] = "#e3e8cd"
         GLabel_515["font"] = ft
         GLabel_515["fg"] = "#333333"
         GLabel_515["justify"] = "center"
@@ -171,15 +178,17 @@ class TripManagerPage:
 
         # TRIP COORDINATOR SETTINGS
         GLabel_955 = tk.Label(figure)
-        ft = tkf.Font(family='Arial', size=16)
+        ft = tkf.Font(family='Arial', size=18)
+        GLabel_955["bg"] = "#e3e8cd"
         GLabel_955["font"] = ft
         GLabel_955["fg"] = "#333333"
         GLabel_955["justify"] = "left"
         GLabel_955["text"] = "Coordinator Management"
-        GLabel_955.place(x=650, y=5, width=250, height=33)
+        GLabel_955.place(x=600, y=5, width=350, height=33)
 
         GLabel_587 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_587["bg"] = "#e3e8cd"
         GLabel_587["font"] = ft
         GLabel_587["fg"] = "#333333"
         GLabel_587["justify"] = "center"
@@ -196,6 +205,7 @@ class TripManagerPage:
 
         GLabel_564 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_564["bg"] = "#e3e8cd"
         GLabel_564["font"] = ft
         GLabel_564["fg"] = "#333333"
         GLabel_564["justify"] = "center"
@@ -213,6 +223,7 @@ class TripManagerPage:
 
         GLabel_377 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
+        GLabel_377["bg"] = "#e3e8cd"
         GLabel_377["font"] = ft
         GLabel_377["fg"] = "#333333"
         GLabel_377["justify"] = "center"
@@ -260,7 +271,7 @@ class TripManagerPage:
 
         btn_print_invoice = tk.Button(figure)
         btn_print_invoice["bg"] = "green"
-        ft = tkf.Font(family='Arial', size=16)
+        ft = tkf.Font(family='Arial', size=18)
         btn_print_invoice["font"] = ft
         btn_print_invoice["fg"] = "#ffffff"
         btn_print_invoice["justify"] = "center"
