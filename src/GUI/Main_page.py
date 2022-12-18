@@ -13,7 +13,6 @@ from src.GUI.ManagerLogin import ManagerLogin
 
 class App:
     def __init__(self, figure):
-        # setting title
         figure.title("Solent Trip Main Page")
         figure["bg"] = "#e3e8cd"
         width = 850

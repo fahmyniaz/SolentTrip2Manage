@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.Code.PaymentRecipt import PaymentRecipt
+from src.Code.PaymentInvoice import PaymentInvoice
 from src.Code.SystemUser import SystemUser
 from src.Code.Traveller import Traveller
 from src.Code.Trip import Trip
@@ -154,7 +154,7 @@ class TripCoordinator(SystemUser):
 
         return None
 
-    def __generateRecipt(self, trip: Trip, passenger: Traveller, payment: int):
+    def __generateInvoice(self, trip: Trip, passenger: Traveller, payment: int):
         """
         This will generate a recipt for the passenger
         :param trip: Trip object
@@ -162,10 +162,10 @@ class TripCoordinator(SystemUser):
         :param payment: Paid price for the trip
         :return: recipt
         """
-        recipt = PaymentRecipt(trip, passenger, payment)
-        self.recipts.append(recipt)  # this will add the recipt for the Corrdinaters recipts
+        receipt = PaymentInvoice(trip, passenger, payment)
+        self.receipts.append(receipt)
 
-        return recipt
+        return receipt
 
     def printCoordinatorInvoice(self):
         """

@@ -12,7 +12,7 @@ class AdministratorPage:
 
     def __init__(self, figure, username, contact):
 
-        self.MANAGERS = {"Choose below": None}
+        self.MANAGERS = {"CHOOSE BELOW": None}
 
         # user
         all_users = Administrator.SYSTEM_USERS
@@ -47,7 +47,7 @@ class AdministratorPage:
         ft = tkf.Font(family='Arial', size=18)
         TitleLabel["bg"] = "#e3e8cd"
         TitleLabel["font"] = ft
-        TitleLabel["fg"] = "black"
+        TitleLabel["fg"] = "#800000"
         TitleLabel["text"] = "Manage Trip Page"
         TitleLabel.place(x=300, y=20, width=218, height=30)
 

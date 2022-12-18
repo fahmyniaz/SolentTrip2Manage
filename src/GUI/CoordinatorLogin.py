@@ -26,7 +26,7 @@ class CoordinatorLogin:
         title["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Times', size=28)
         title["font"] = ft
-        title["fg"] = "#010101"
+        title["fg"] = "#800000"
         title["justify"] = "center"
         title["text"] = "TRIP COORDINATOR"
         title.place(x=0, y=0, width=width, height=52)

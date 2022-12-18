@@ -11,8 +11,8 @@ class TripManagerPage:
 
     def __init__(self, figure, username, contact):
 
-        self.TRIPS = {"+ Add New": None}
-        self.COORDINATORS = {"+ Add New": None}
+        self.TRIPS = {"+ CREATE NEW": None}
+        self.COORDINATORS = {"+ CREATE NEW": None}
 
         # user
         all_users = TripManager.SYSTEM_USERS
@@ -53,7 +53,7 @@ class TripManagerPage:
         ft = tkf.Font(family='Arial', size=18)
         GLabel_654["bg"] = "#e3e8cd"
         GLabel_654["font"] = ft
-        GLabel_654["fg"] = "#333333"
+        GLabel_654["fg"] = "#800000"
         GLabel_654["justify"] = "left"
         GLabel_654["text"] = "Trip Management"
         GLabel_654.place(x=20, y=5, width=350, height=33)
@@ -181,7 +181,7 @@ class TripManagerPage:
         ft = tkf.Font(family='Arial', size=18)
         GLabel_955["bg"] = "#e3e8cd"
         GLabel_955["font"] = ft
-        GLabel_955["fg"] = "#333333"
+        GLabel_955["fg"] = "#800000"
         GLabel_955["justify"] = "left"
         GLabel_955["text"] = "Coordinator Management"
         GLabel_955.place(x=600, y=5, width=350, height=33)
