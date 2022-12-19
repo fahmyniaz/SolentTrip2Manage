@@ -19,10 +19,10 @@ class PaymentInvoice:
 
         self.paymentDate = datetime.now()
 
-        passenger.paymentRecipts.append(self)
+        passenger.paymentInvoice.append(self)
 
     def __str__(self):
-        return_str = "Recipt ID : " + str(self.id) + \
+        return_str = "Invoice ID : " + str(self.id) + \
                      ", Trip : " + self.trip.name + \
                      ", passenger : " + self.passenger.name + \
                      ", payment :" + str(self.payment) + \

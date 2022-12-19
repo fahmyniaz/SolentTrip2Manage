@@ -1,17 +1,18 @@
 import tkinter as tk
 import tkinter.font as tkf
 
-from src.GUI.TripCoordinatorPage import TripCoordinatorPage
+from src.Code.Administrator import Administrator
+from src.User_Interface.AdministratorPage import AdministratorPage
 
 
-class CoordinatorLogin:
-
-    COORDINATORS = []
+class AdminLogin:
+    main_admin = Administrator("admin", "pw1234")
+    ADMIN = [main_admin]
 
     def __init__(self, figure):
 
         # setting title
-        figure.title("Trip Coordinator Login")
+        figure.title("Login Page")
         # setting window size
         figure["bg"] = "#d7fcb8"
         width = 750
@@ -24,47 +25,47 @@ class CoordinatorLogin:
 
         title = tk.Label(figure)
         title["bg"] = "#d7fcb8"
-        ft = tkf.Font(family='Times', size=28)
+        ft = tkf.Font(family='Arial', size=22)
         title["font"] = ft
         title["fg"] = "#800000"
         title["justify"] = "center"
-        title["text"] = "TRIP COORDINATOR"
+        title["text"] = "Solent Trip Management Login page"
         title.place(x=0, y=0, width=width, height=52)
 
         lb_username = tk.Label(figure)
         lb_username["bg"] = "#d7fcb8"
-        ft = tkf.Font(family='Arial', size=12, weight="normal")
+        ft = tkf.Font(family='Arial', size=14, weight="normal")
         lb_username["font"] = ft
         lb_username["fg"] = "#000000"
         lb_username["justify"] = "center"
         lb_username["text"] = "Username"
-        lb_username.place(x=170, y=110, width=80, height=40)
+        lb_username.place(x=150, y=110, width=90, height=40)
 
         self.edit_username = tk.Entry(figure)
-        self.edit_username["bg"] = "#FFFFFF"
+        self.edit_username["bg"] = "white"
         self.edit_username["borderwidth"] = "5px"
         self.edit_username["relief"] = tk.FLAT
-        ft = tkf.Font(family='Arial', size=12, weight="normal")
+        ft = tkf.Font(family='Helvetica', size=17, weight="normal")
         self.edit_username["font"] = ft
-        self.edit_username["fg"] = "#333333"
+        self.edit_username["fg"] = "cyan4"
         self.edit_username["justify"] = "left"
         self.edit_username["text"] = ""
         self.edit_username.place(x=250, y=110, width=250, height=40)
 
         lb_contact = tk.Label(figure)
         lb_contact["bg"] = "#d7fcb8"
-        ft = tkf.Font(family='Arial', size=12, weight="normal")
+        ft = tkf.Font(family='Arial', size=14, weight="normal")
         lb_contact["font"] = ft
         lb_contact["fg"] = "#000000"
         lb_contact["justify"] = "center"
         lb_contact["text"] = "Password"
-        lb_contact.place(x=170, y=190, width=80, height=40)
+        lb_contact.place(x=150, y=190, width=90, height=40)
 
         self.edit_contact = tk.Entry(figure)
-        self.edit_contact["bg"] = "#ffffff"
+        self.edit_contact["bg"] = "white"
         self.edit_contact["borderwidth"] = "5px"
         self.edit_contact["relief"] = tk.FLAT
-        ft = tkf.Font(family='Arial', size=12, weight="normal")
+        ft = tkf.Font(family='Times', size=12, weight="normal")
         self.edit_contact["font"] = ft
         self.edit_contact["fg"] = "#333333"
         self.edit_contact["justify"] = "left"
@@ -80,7 +81,7 @@ class CoordinatorLogin:
         btn_login["relief"] = tk.GROOVE
         ft = tkf.Font(family='Arial', size=15)
         btn_login["font"] = ft
-        btn_login["fg"] = "#ffffff"
+        btn_login["fg"] = "#FFFFFF"
         btn_login["justify"] = "center"
         btn_login["text"] = "LOGIN"
         btn_login.place(x=280, y=280, width=180, height=40)
@@ -88,11 +89,20 @@ class CoordinatorLogin:
 
         lb_contact = tk.Label(figure)
         lb_contact["bg"] = "#d7fcb8"
+        ft = tkf.Font(family='Arial', size=14, weight="normal")
+        lb_contact["font"] = ft
+        lb_contact["fg"] = "#000000"
+        lb_contact["justify"] = "center"
+        lb_contact["text"] = "Username - admin / Password - pw1234"
+        lb_contact.place(x=180, y=350, width=400, height=40)
+
+        lb_contact = tk.Label(figure)
+        lb_contact["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=13, weight="normal")
         lb_contact["font"] = ft
         lb_contact["fg"] = "red"
         lb_contact["justify"] = "center"
-        lb_contact["text"] = "Please make sure you enter the username and password you have given during registration."
+        lb_contact["text"] = "Please make sure you enter the correct password to open the next window."
         lb_contact.place(x=0, y=390, width=800, height=40)
 
     def btnLoginHandler(self, figure):
@@ -102,23 +112,23 @@ class CoordinatorLogin:
         isValidUser = self.authonticate(username, contact)
 
         if isValidUser:
-            coordinatorFigure = tk.Toplevel(figure)
-            TripCoordinatorPage(coordinatorFigure, username, contact)
+            adminFigure = tk.Toplevel(figure)
+            AdministratorPage(adminFigure, username, contact)
             figure.withdraw()
-            coordinatorFigure.mainloop()
+            adminFigure.mainloop()
 
         else:
             print("Login Failed")
 
     @staticmethod
     def authonticate(username: str, contact: str):
-        for coordinator in CoordinatorLogin.COORDINATORS:
-            if coordinator.name == username and coordinator.contact == contact:
+        for admin in AdminLogin.ADMIN:
+            if admin.name == username and admin.contact == contact:
                 return True
         return False
 
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = CoordinatorLogin(root)
+    app = AdminLogin(root)
     root.mainloop()

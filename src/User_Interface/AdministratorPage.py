@@ -3,9 +3,9 @@ import tkinter.font as tkf
 from tkinter import ttk
 
 from src.Code.Administrator import Administrator
-from src.GUI.ManagerLogin import ManagerLogin
-from src.GUI.TripManagerPage import TripManagerPage
-from src.GUI.TripCoordinatorPage import TripCoordinatorPage
+from src.User_Interface.ManagerLogin import ManagerLogin
+from src.User_Interface.TripManagerPage import TripManagerPage
+from src.User_Interface.TripCoordinatorPage import TripCoordinatorPage
 
 
 class AdministratorPage:

@@ -4,7 +4,7 @@ from datetime import datetime
 from tkinter import ttk
 
 from src.Code.TripManager import TripManager
-from src.GUI.CoordinatorLogin import CoordinatorLogin
+from src.User_Interface.CoordinatorLogin import CoordinatorLogin
 
 
 class TripManagerPage:
@@ -99,7 +99,7 @@ class TripManagerPage:
         GLabel_766["font"] = ft
         GLabel_766["fg"] = "#333333"
         GLabel_766["justify"] = "center"
-        GLabel_766["text"] = "Start Date"
+        GLabel_766["text"] = "Start Date (YYYY-MM-DD)"
         GLabel_766.place(x=30, y=140, width=100, height=30)
 
         self.edit_start_date = tk.Entry(figure)

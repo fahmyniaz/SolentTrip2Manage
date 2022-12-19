@@ -27,7 +27,7 @@ class TripCoordinatorPage:
         if self.user is None:
             raise ModuleNotFoundError
 
-        # retrieving trips from the user instance
+        # retriving trips from the user instance
         if hasattr(self.user, 'tripsCoordinating'):
             for trip in self.user.tripsCoordinating:
                 self.TRIPS[trip.name] = trip
@@ -149,15 +149,6 @@ class TripCoordinatorPage:
         btn_update_trip.place(x=180, y=250, width=70, height=30)
         btn_update_trip["command"] = self.btnUpdateTripHandler
 
-        TLHead = tk.Label(figure)
-        ft = tkf.Font(family='Arial', size=16)
-        TLHead["bg"] = "#e3e8cd"
-        TLHead["font"] = ft
-        TLHead["fg"] = "#800000"
-        TLHead["justify"] = "left"
-        TLHead["text"] = "Trip Leg Management"
-        TLHead.place(x=370, y=5, width=250, height=33)
-
         GLabel_148 = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
         GLabel_148["bg"] = "#e3e8cd"
@@ -213,13 +204,12 @@ class TripCoordinatorPage:
         self.edit_leg_tp_contact.place(x=440, y=140, width=180, height=30)
 
         GLabel_630 = tk.Label(figure)
-        ft = tkf.Font(family='Arial', size=12)
-        GLabel_630["bg"] = "#e3e8cd"
+        ft = tkf.Font(family='Arial', size=10)
         GLabel_630["font"] = ft
         GLabel_630["fg"] = "#333333"
         GLabel_630["justify"] = "center"
         GLabel_630["text"] = "Transport Mode"
-        GLabel_630.place(x=280, y=190, width=180, height=30)
+        GLabel_630.place(x=320, y=190, width=120, height=30)
 
         self.combo_tp_mode = ttk.Combobox(figure,
                                           state="readonly",
@@ -238,6 +228,26 @@ class TripCoordinatorPage:
         btn_add_trip_leg["text"] = "Add Trip Leg"
         btn_add_trip_leg.place(x=390, y=250, width=200, height=30)
         btn_add_trip_leg["command"] = self.btnAddTripLegHandler
+
+        btn_print_Info = tk.Button(figure)
+        btn_print_Info["bg"] = "#1c802e"
+        ft = tkf.Font(family='Arial', size=14)
+        btn_print_Info["font"] = ft
+        btn_print_Info["fg"] = "#ffffff"
+        btn_print_Info["justify"] = "center"
+        btn_print_Info["text"] = "Print Trip Info"
+        btn_print_Info.place(x=580, y=390, width=180, height=50)
+        btn_print_Info["command"] = self.btnItineraryPrinter
+
+        btn_print_invoice = tk.Button(figure)
+        btn_print_invoice["bg"] = "#1c802e"
+        ft = tkf.Font(family='Arial', size=14)
+        btn_print_invoice["font"] = ft
+        btn_print_invoice["fg"] = "#ffffff"
+        btn_print_invoice["justify"] = "center"
+        btn_print_invoice["text"] = "Print Invoice"
+        btn_print_invoice.place(x=800, y=390, width=180, height=50)
+        btn_print_invoice["command"] = self.btnInvoicePrinter
 
         # Passenger Management ------------------------------------------------------------------
 
@@ -395,32 +405,12 @@ class TripCoordinatorPage:
         btn_update_passenger.place(x=400, y=340, width=150, height=30)
         btn_update_passenger["command"] = self.btnUpdatePassengerHandler
 
-        btn_print_Info = tk.Button(figure)
-        btn_print_Info["bg"] = "#1c802e"
-        ft = tkf.Font(family='Arial', size=14)
-        btn_print_Info["font"] = ft
-        btn_print_Info["fg"] = "#ffffff"
-        btn_print_Info["justify"] = "center"
-        btn_print_Info["text"] = "Print Trip Info"
-        btn_print_Info.place(x=580, y=390, width=180, height=50)
-        btn_print_Info["command"] = self.btnItineraryPrinter
-
-        btn_print_invoice = tk.Button(figure)
-        btn_print_invoice["bg"] = "#1c802e"
-        ft = tkf.Font(family='Arial', size=14)
-        btn_print_invoice["font"] = ft
-        btn_print_invoice["fg"] = "#ffffff"
-        btn_print_invoice["justify"] = "center"
-        btn_print_invoice["text"] = "Print Invoice"
-        btn_print_invoice.place(x=800, y=390, width=180, height=50)
-        btn_print_invoice["command"] = self.btnInvoicePrinter
-
     def btnAddTripHandler(self):
         trip_name = self.edit_trip_name.get()
         trip_date = datetime(*map(int, self.edit_start_date.get().split("-")))
         trip_contact = self.edit_trip_contact.get()
 
-        new_trip = self.user.createTrip(trip_name,
+        new_trip: object = self.user.createTrip(trip_name,
                                         trip_date,
                                         trip_contact)
         if new_trip is not None:
@@ -469,7 +459,7 @@ class TripCoordinatorPage:
         start_location = self.edit_leg_start_loc.get()
         destination = self.edit_leg_destination.get()
         transport_contact = self.edit_leg_tp_contact.get()
-        transport_mode = TRAVEL_MODE[self.combo_tp_mode.get()]
+        transport_mode = ModeOfTravel[self.combo_tp_mode.get()]
 
         trip = self.TRIPS[self.combo_trip.get()]
 
@@ -480,7 +470,7 @@ class TripCoordinatorPage:
                                             transport_mode)
 
         if new_trip_leg is not None:
-            print("Adding Trip Leg successfull for " + trip.name)
+            print("Added Trip Leg Successfully for " + trip.name)
 
             self.edit_leg_start_loc.delete(0, tk.END)
             self.edit_leg_destination.delete(0, tk.END)
@@ -489,7 +479,7 @@ class TripCoordinatorPage:
             self.combo_tp_mode.current(0)
 
         else:
-            print("Trip adding failed")
+            print("Trip added failed")
 
     def btnAddPassengerHandler(self):
 
@@ -513,7 +503,7 @@ class TripCoordinatorPage:
                                                   payment)
 
         if new_passenger is not None:
-            print("Creating Passenger " + new_passenger.name + " successful")
+            print("Created Passenger " + new_passenger.name + " Successfully")
 
             self.PASSENGERS[new_passenger.name] = new_passenger
 
@@ -532,7 +522,7 @@ class TripCoordinatorPage:
             self.edit_payment.delete(0, tk.END)
 
         else:
-            print("Creating Passenger Failed")
+            print("Created Passenger Failed")
 
     def btnUpdatePassengerHandler(self):
 
@@ -553,7 +543,7 @@ class TripCoordinatorPage:
                                                   {doc_type, doc_id})
 
         if update_result == 1:
-            print("Updating Passenger " + passenger.name + " successful")
+            print("Updated Passenger " + passenger.name + " Successfully")
 
             self.combo_select_passenger.configure(values=list(self.PASSENGERS.keys()))
             self.combo_select_passenger.current(0)
@@ -576,7 +566,7 @@ class TripCoordinatorPage:
         if trip is not None:
             print(self.user.generateItinerary(trip))
         else:
-            print("Select a trip to print Itinerary")
+            print("Please select a trip to print Invoice")
 
     def btnInvoicePrinter(self):
         print(self.user.printCoordinatorInvoice())
@@ -585,5 +575,5 @@ class TripCoordinatorPage:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = TripCoordinatorPage(root, "test", "0000")
+    app = TripCoordinatorPage(root, "test", "pw1234")
     root.mainloop()

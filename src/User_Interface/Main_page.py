@@ -6,9 +6,9 @@ from PIL import Image,ImageTk
 from tkinter import *
 
 
-from src.GUI.AdminLogin import AdminLogin
-from src.GUI.CoordinatorLogin import CoordinatorLogin
-from src.GUI.ManagerLogin import ManagerLogin
+from src.User_Interface.AdminLogin import AdminLogin
+from src.User_Interface.CoordinatorLogin import CoordinatorLogin
+from src.User_Interface.ManagerLogin import ManagerLogin
 
 
 class App:

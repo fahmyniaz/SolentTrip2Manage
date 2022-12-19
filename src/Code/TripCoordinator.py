@@ -9,18 +9,13 @@ from src.Code.TripLeg import TripLeg
 
 class TripCoordinator(SystemUser):
     def __init__(self, name: str, contact: str, supervisour):
-        """
-        This will initialize the TripCoordinator
-        :param name: Name of the Coordinator
-        :param contact: contact number of the coordinator
-        """
         super().__init__(name, contact)
 
         self.supervisour = supervisour
 
         self.tripsCoordinating = []
         self.passangers = []
-        self.recipts = []
+        self.Invoice = []
 
     def createPassenger(self,
                         trip: Trip,
@@ -29,22 +24,12 @@ class TripCoordinator(SystemUser):
                         dob: datetime,
                         emergency_contact: str,
                         payment: int):
-        """
-        This will create a new Traveller and add him/her to the selected trip
-        :param trip: Trip that passenger is going
-        :param name: Name of the Traveler
-        :param address: Address of the Traveler
-        :param dob: date of Birth Of the traveler
-        :param emergency_contact: Emergency contact of the traveler
-        :param gov_id: Dictionary containg government ID
-        :param payment: payment for the trip
-        :return: new Traveler object
-        """
+
         traveller = Traveller(name, address, dob, emergency_contact)
         trip.passengers.append(traveller)
         self.passangers.append(traveller)
 
-        TripCoordinator.__generateRecipt(self, trip, traveller, payment)
+        TripCoordinator.__generateInvoice(self, trip, traveller, payment)
 
         return traveller
 
@@ -54,16 +39,7 @@ class TripCoordinator(SystemUser):
                         address: str,
                         dob: datetime,
                         emergency_contact: str):
-        """
-        This will update the Traveller with new values
-        :param traveller: Traveller that needed to be updated
-        :param name: new Name of the traveller
-        :param address: new Address
-        :param dob: new DOB
-        :param emergency_contact: new Emergency contact
-        :param gov_id: new Gov ID
-        :return: 1 if successfull. 0 if not
-        """
+
         if traveller in self.passangers:
             traveller.name = name
             traveller.address = address
@@ -78,16 +54,7 @@ class TripCoordinator(SystemUser):
                    name: str,
                    start_date: datetime,
                    contact: str):
-        """
-        This will create a new Trip
-        :param name: Name of the trip
-        :param start_date: starting date of the trip
-        :param contact: contact of the trip
-        :return: New Trip Object
-        """
-
         trip = Trip(name, start_date, contact, self)
-
         self.tripsCoordinating.append(trip)
         self.supervisour.trips_under_supervision.append(trip)
 
@@ -98,14 +65,6 @@ class TripCoordinator(SystemUser):
                    name: str,
                    start_date: datetime,
                    contact: str):
-        """
-        This will update a given trip
-        :param trip: Trip object that need to be updated
-        :param name: Name of the trip
-        :param start_date: starting date for the trip
-        :param contact: contact of the trip
-        :return: 1 if succesfull, 0 if not
-        """
         if trip in self.tripsCoordinating:
             trip.name = name
             trip.start_date = start_date
@@ -121,15 +80,6 @@ class TripCoordinator(SystemUser):
                    destination: str,
                    transport_contact: str,
                    transport_mode: str):
-        """
-        This will add a new TripLeg to a given trip
-        :param trip: Trip which this leg need to be added
-        :param start_loc: starting location for the leg
-        :param destination: destination for the leg
-        :param transport_contact: transport contact
-        :param transport_mode: Mode of transportation
-        :return: added trip leg, None if adding invalid
-        """
         if trip in self.tripsCoordinating:
             trip_leg = TripLeg(start_loc, destination, transport_contact, transport_mode)
             trip.itinerary.append(trip_leg)
@@ -174,14 +124,14 @@ class TripCoordinator(SystemUser):
         """
         return_str = "Invoice for the Trip Coordinator: " + self.name + "\n\n"
 
-        recipts_available = False
+        invoice_available = False
 
-        for recipt in self.recipts:
-            return_str += str(recipt) + "\n"
-            recipts_available = True
+        for invoice in self.invoice:
+            return_str += str(invoice) + "\n"
+            invoice_available = True
 
-        if not recipts_available:
-            return_str += "No Recipts Available\n"
+        if not invoice_available:
+            return_str += "No Invoice Available\n"
 
         return_str += "Contact Number - Trip Coordinator : " + self.contact
 

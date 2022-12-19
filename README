@@ -1,2 +1,10 @@
-HOW TO USE THE PROGRAM
+FOLLOW THE BELOW STEPS TO USE THE PROGRAM
 
+1) Run the python file named Main_Page.py in the "User_Interface" Directory
+2) Solent Trip Main Page wil be shown three buttons (Admin, Manager, Coordinator)
+3) First step is to click Admin button to open "main login" page
+4) In the Login page you have to enter the (username - admin | Password - pw1234) to open Admin Page.
+5) "Admin" page is the page to register/ update/ delete a manager profile.
+6) "Admin" page directs to the "trip management" page by clicking the "manager access" button.
+7) In the "trip management" page you have to first create a new coordinator also can update and delete the coordinator details.
+8) SPECIAL NOTE during entering dateTime please enter in the format (YYYY-MM-DD) to avoid error.
