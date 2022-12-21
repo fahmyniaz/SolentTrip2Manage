@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkf
 
-from src.Code.Administrator import Administrator
+from src.Coding.Administrator import Administrator
 from src.User_Interface.AdministratorPage import AdministratorPage
 
 
@@ -10,10 +10,7 @@ class AdminLogin:
     ADMIN = [main_admin]
 
     def __init__(self, figure):
-
-        # setting title
         figure.title("Login Page")
-        # setting window size
         figure["bg"] = "#d7fcb8"
         width = 750
         height = 450
@@ -32,14 +29,14 @@ class AdminLogin:
         title["text"] = "Solent Trip Management Login page"
         title.place(x=0, y=0, width=width, height=52)
 
-        lb_username = tk.Label(figure)
-        lb_username["bg"] = "#d7fcb8"
+        lbl_username = tk.Label(figure)
+        lbl_username["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
-        lb_username["font"] = ft
-        lb_username["fg"] = "#000000"
-        lb_username["justify"] = "center"
-        lb_username["text"] = "Username"
-        lb_username.place(x=150, y=110, width=90, height=40)
+        lbl_username["font"] = ft
+        lbl_username["fg"] = "#000000"
+        lbl_username["justify"] = "center"
+        lbl_username["text"] = "Username"
+        lbl_username.place(x=150, y=110, width=90, height=40)
 
         self.edit_username = tk.Entry(figure)
         self.edit_username["bg"] = "white"
@@ -52,26 +49,26 @@ class AdminLogin:
         self.edit_username["text"] = ""
         self.edit_username.place(x=250, y=110, width=250, height=40)
 
-        lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#d7fcb8"
+        lbl_psw = tk.Label(figure)
+        lbl_psw["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
-        lb_contact["font"] = ft
-        lb_contact["fg"] = "#000000"
-        lb_contact["justify"] = "center"
-        lb_contact["text"] = "Password"
-        lb_contact.place(x=150, y=190, width=90, height=40)
+        lbl_psw["font"] = ft
+        lbl_psw["fg"] = "#000000"
+        lbl_psw["justify"] = "center"
+        lbl_psw["text"] = "Password"
+        lbl_psw.place(x=150, y=190, width=90, height=40)
 
-        self.edit_contact = tk.Entry(figure)
-        self.edit_contact["bg"] = "white"
-        self.edit_contact["borderwidth"] = "5px"
-        self.edit_contact["relief"] = tk.FLAT
+        self.edit_psw = tk.Entry(figure)
+        self.edit_psw["bg"] = "white"
+        self.edit_psw["borderwidth"] = "5px"
+        self.edit_psw["relief"] = tk.FLAT
         ft = tkf.Font(family='Times', size=12, weight="normal")
-        self.edit_contact["font"] = ft
-        self.edit_contact["fg"] = "#333333"
-        self.edit_contact["justify"] = "left"
-        self.edit_contact["text"] = ""
-        self.edit_contact["show"] = "*"
-        self.edit_contact.place(x=250, y=190, width=250, height=40)
+        self.edit_psw["font"] = ft
+        self.edit_psw["fg"] = "#333333"
+        self.edit_psw["justify"] = "left"
+        self.edit_psw["text"] = ""
+        self.edit_psw["show"] = "*"
+        self.edit_psw.place(x=250, y=190, width=250, height=40)
 
         btn_login = tk.Button(figure)
         btn_login["activebackground"] = "#5e75db"
@@ -87,27 +84,27 @@ class AdminLogin:
         btn_login.place(x=280, y=280, width=180, height=40)
         btn_login["command"] = lambda: self.btnLoginHandler(figure)
 
-        lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#d7fcb8"
+        lbl1 = tk.Label(figure)
+        lbl1["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=14, weight="normal")
-        lb_contact["font"] = ft
-        lb_contact["fg"] = "#000000"
-        lb_contact["justify"] = "center"
-        lb_contact["text"] = "Username - admin / Password - pw1234"
-        lb_contact.place(x=180, y=350, width=400, height=40)
+        lbl1["font"] = ft
+        lbl1["fg"] = "#000000"
+        lbl1["justify"] = "center"
+        lbl1["text"] = "Username - admin / Password - pw1234"
+        lbl1.place(x=180, y=350, width=400, height=40)
 
-        lb_contact = tk.Label(figure)
-        lb_contact["bg"] = "#d7fcb8"
+        lbl2 = tk.Label(figure)
+        lbl2["bg"] = "#d7fcb8"
         ft = tkf.Font(family='Arial', size=13, weight="normal")
-        lb_contact["font"] = ft
-        lb_contact["fg"] = "red"
-        lb_contact["justify"] = "center"
-        lb_contact["text"] = "Please make sure you enter the correct password to open the next window."
-        lb_contact.place(x=0, y=390, width=800, height=40)
+        lbl2["font"] = ft
+        lbl2["fg"] = "red"
+        lbl2["justify"] = "center"
+        lbl2["text"] = "Please make sure you enter the correct password to open the next window."
+        lbl2.place(x=0, y=390, width=800, height=40)
 
     def btnLoginHandler(self, figure):
         username = self.edit_username.get()
-        contact = self.edit_contact.get()
+        contact = self.edit_psw.get()
 
         isValidUser = self.authonticate(username, contact)
 

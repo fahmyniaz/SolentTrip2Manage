@@ -1,18 +1,14 @@
 from datetime import datetime
-
-from src.Code.PaymentInvoice import PaymentInvoice
-from src.Code.SystemUser import SystemUser
-from src.Code.Traveller import Traveller
-from src.Code.Trip import Trip
-from src.Code.TripLeg import TripLeg
-
+from src.Coding.SystemUser import SystemUser
+from src.Coding.Trip import Trip
+from src.Coding.TripLeg import TripLeg
+from src.Coding.PaymentInvoice import PaymentInvoice
+from src.Coding.Traveller import Traveller
 
 class TripCoordinator(SystemUser):
-    def __init__(self, name: str, contact: str, supervisour):
+    def __init__(self, name: str, contact: str, supervisor):
         super().__init__(name, contact)
-
-        self.supervisour = supervisour
-
+        self.supervisor = supervisor
         self.tripsCoordinating = []
         self.passangers = []
         self.Invoice = []
@@ -24,13 +20,10 @@ class TripCoordinator(SystemUser):
                         dob: datetime,
                         emergency_contact: str,
                         payment: int):
-
         traveller = Traveller(name, address, dob, emergency_contact)
         trip.passengers.append(traveller)
         self.passangers.append(traveller)
-
         TripCoordinator.__generateInvoice(self, trip, traveller, payment)
-
         return traveller
 
     def updatePassenger(self,
@@ -45,9 +38,7 @@ class TripCoordinator(SystemUser):
             traveller.address = address
             traveller.dob = dob
             traveller.emergency_contact = emergency_contact
-
             return 1
-
         return 0
 
     def createTrip(self,
@@ -56,8 +47,7 @@ class TripCoordinator(SystemUser):
                    contact: str):
         trip = Trip(name, start_date, contact, self)
         self.tripsCoordinating.append(trip)
-        self.supervisour.trips_under_supervision.append(trip)
-
+        self.supervisor.trips_under_supervision.append(trip)
         return trip
 
     def updateTrip(self,
@@ -69,9 +59,7 @@ class TripCoordinator(SystemUser):
             trip.name = name
             trip.start_date = start_date
             trip.contact = contact
-
             return 1
-
         return 0
 
     def addTripLeg(self,
@@ -86,55 +74,29 @@ class TripCoordinator(SystemUser):
             return trip_leg
         return None
 
-    def generateItinerary(self, trip: Trip):
-        """
-        This will return Itinerary for a given trip
-        :param trip: Trip that the itinerary need to be generated
-        :return: printable Itinerary, None if trip is not valid
-        """
+    def generateInvoice(self, trip: Trip):
         if trip in self.tripsCoordinating:
             return_str = ""
-
             return_str += "Trip to " + trip.name + "\n\n"
-
             for tripLeg in trip.itinerary:
                 return_str += str(tripLeg) + "\n"
-
             return return_str
-
         return None
 
     def __generateInvoice(self, trip: Trip, passenger: Traveller, payment: int):
-        """
-        This will generate a recipt for the passenger
-        :param trip: Trip object
-        :param passenger: Traveler object assigned as the passenger
-        :param payment: Paid price for the trip
-        :return: recipt
-        """
         receipt = PaymentInvoice(trip, passenger, payment)
         self.receipts.append(receipt)
-
         return receipt
 
     def printCoordinatorInvoice(self):
-        """
-        This will return the total invoice for the cordinator
-        :return: printable invoice
-        """
         return_str = "Invoice for the Trip Coordinator: " + self.name + "\n\n"
-
         invoice_available = False
-
         for invoice in self.invoice:
             return_str += str(invoice) + "\n"
             invoice_available = True
-
         if not invoice_available:
             return_str += "No Invoice Available\n"
-
-        return_str += "Contact Number - Trip Coordinator : " + self.contact
-
+        return_str += "Contact Number Trip Coordinator : " + self.contact
         return return_str
 
 

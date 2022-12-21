@@ -5,10 +5,9 @@ from tkinter import Label
 from PIL import Image,ImageTk
 from tkinter import *
 
-
+from src.User_Interface.ManagerLogin import ManagerLogin
 from src.User_Interface.AdminLogin import AdminLogin
 from src.User_Interface.CoordinatorLogin import CoordinatorLogin
-from src.User_Interface.ManagerLogin import ManagerLogin
 
 
 class App:
@@ -37,7 +36,7 @@ class App:
         btn_admin["anchor"] = "center"
         btn_admin["bg"] = "#008080"
         btn_admin["bd"] = 1
-        ft = tkf.Font(family='Times', size=22)
+        ft = tkf.Font(family='Arial', size=22)
         btn_admin["font"] = ft
         btn_admin["fg"] = "#ffffff"
         btn_admin["justify"] = "center"

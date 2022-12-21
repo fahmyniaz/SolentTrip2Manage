@@ -1,9 +1,9 @@
 from datetime import datetime
-from src.Code.SystemUser import SystemUser
-from src.Code.Trip import Trip
-from src.Code.TripManager import TripManager
-from src.Code.TripCoordinator import TripCoordinator
-from src.Code.Traveller import Traveller
+from src.Coding.SystemUser import SystemUser
+from src.Coding.Trip import Trip
+from src.Coding.TripManager import TripManager
+from src.Coding.TripCoordinator import TripCoordinator
+from src.Coding.Traveller import Traveller
 
 
 class Administrator(SystemUser):
@@ -64,22 +64,20 @@ class Administrator(SystemUser):
                         address: str,
                         dob: datetime,
                         emergency_contact: str,
-                        gov_id: {type: str, id: str},
                         payment: int):
         tripManager = TripManager("admin", "admin")
         tripCoordinator = TripCoordinator("admin", "admin", tripManager)
-        return tripCoordinator.createPassenger(trip, name, address, dob, emergency_contact, gov_id, payment)
+        return tripCoordinator.createPassenger(trip, name, address, dob, emergency_contact, payment)
 
     def updatePassenger(self,
                         traveller: Traveller,
                         name: str,
                         address: str,
                         dob: datetime,
-                        emergency_contact: str,
-                        gov_id):
+                        emergency_contact: str):
         tripManager = TripManager("admin", "admin")
         tripCoordinator = TripCoordinator("admin", "admin", tripManager)
-        return tripCoordinator.updatePassenger(traveller, name, address, dob, emergency_contact, gov_id)
+        return tripCoordinator.updatePassenger(traveller, name, address, dob, emergency_contact)
 
     def createTrip(self,
                    name: str,
@@ -108,10 +106,10 @@ class Administrator(SystemUser):
         tripCoordinator = TripCoordinator("admin", "admin", tripManager)
         return tripCoordinator.addTripLeg(trip, start_loc, destination, transport_contact, transport_mode)
 
-    def generateItinerary(self, trip: Trip):
+    def generateInvoice(self, trip: Trip):
         tripManager = TripManager("admin", "admin")
         tripCoordinator = TripCoordinator("admin", "admin", tripManager)
-        return tripCoordinator.generateItinerary(trip)
+        return tripCoordinator.generateInvoice(trip)
 
     def printCoordinatorInvoice(self):
         tripManager = TripManager("admin", "admin")
@@ -134,9 +132,7 @@ class Administrator(SystemUser):
 
     def deleteManager(self, tripManager: TripManager):
         if tripManager in self.trip_managers:
-            # first we should delete all the coordinators under manageer
             for tripCoordinator in tripManager.trip_coordinators:
-                # This will delete all the data contain in a trip coordinator
                 tripManager.deleteCoordinator(tripCoordinator)
 
             tripManager.trip_coordinators.clear()
@@ -160,7 +156,7 @@ class Administrator(SystemUser):
             managerAvailable = True
 
         if not managerAvailable:
-            return_str += "No Trip Manager Available\n"
+            return_str += "No Manager Available\n"
 
         return_str += "Contact Number - Admin : " + self.contact
 

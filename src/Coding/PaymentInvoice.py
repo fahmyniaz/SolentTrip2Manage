@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from src.Code.Traveller import Traveller
-from src.Code.Trip import Trip
+from src.Coding.Traveller import Traveller
+from src.Coding.Trip import Trip
 
 
 class PaymentInvoice:
@@ -12,13 +12,10 @@ class PaymentInvoice:
 
         PaymentInvoice.__id += 1
         self.id = PaymentInvoice.__id
-
         self.trip = trip
         self.passenger = passenger
         self.payment = payment
-
         self.paymentDate = datetime.now()
-
         passenger.paymentInvoice.append(self)
 
     def __str__(self):

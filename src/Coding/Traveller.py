@@ -16,5 +16,4 @@ class Traveller:
         self.address = address
         self.dob = dob
         self.emergency_contact = emergency_contact
-
         self.paymentInvoice = []

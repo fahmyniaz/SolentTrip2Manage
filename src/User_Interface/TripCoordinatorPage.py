@@ -3,8 +3,8 @@ import tkinter.font as tkf
 from datetime import datetime
 from tkinter import ttk
 
-from src.Code.ModeOfTravel import ModeOfTravel
-from src.Code.TripCoordinator import TripCoordinator
+from src.Coding.ModeOfTravel import ModeOfTravel
+from src.Coding.TripCoordinator import TripCoordinator
 
 
 class TripCoordinatorPage:
@@ -13,21 +13,13 @@ class TripCoordinatorPage:
 
         self.TRIPS = {"+ CREATE TRIP": None}
         self.PASSENGERS = {}
-
-        # user
         all_users = TripCoordinator.SYSTEM_USERS
         self.user = None
-
-        # get the current user in the session
         for user in all_users:
             if user.name == username and user.contact == contact:
                 self.user = user
-
-        # if the user is not found
         if self.user is None:
             raise ModuleNotFoundError
-
-        # retriving trips from the user instance
         if hasattr(self.user, 'tripsCoordinating'):
             for trip in self.user.tripsCoordinating:
                 self.TRIPS[trip.name] = trip
@@ -35,11 +27,7 @@ class TripCoordinatorPage:
         if hasattr(self.user, 'passangers'):
             for passenger in self.user.passangers:
                 self.PASSENGERS[passenger.name] = passenger
-
-        # setting title
         figure.title("Trip Coordinator")
-
-        # setting window size
         figure["bg"] = "#e3e8cd"
         width = 1000
         height = 450
@@ -49,23 +37,23 @@ class TripCoordinatorPage:
         figure.geometry(alignstr)
         figure.resizable(width=False, height=False)
 
-        GLabel_654 = tk.Label(figure)
+        LblTitle = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=16)
-        GLabel_654["bg"] = "#e3e8cd"
-        GLabel_654["font"] = ft
-        GLabel_654["fg"] = "#800000"
-        GLabel_654["justify"] = "left"
-        GLabel_654["text"] = "Trip Management"
-        GLabel_654.place(x=10, y=5, width=250, height=33)
+        LblTitle["bg"] = "#e3e8cd"
+        LblTitle["font"] = ft
+        LblTitle["fg"] = "#800000"
+        LblTitle["justify"] = "left"
+        LblTitle["text"] = "Trip Management"
+        LblTitle.place(x=10, y=5, width=250, height=33)
 
-        GLabel_515 = tk.Label(figure)
+        lbl_seltrip = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_515["bg"] = "#e3e8cd"
-        GLabel_515["font"] = ft
-        GLabel_515["fg"] = "#333333"
-        GLabel_515["justify"] = "center"
-        GLabel_515["text"] = "Select Trip"
-        GLabel_515.place(x=5, y=45, width=100, height=30)
+        lbl_seltrip["bg"] = "#e3e8cd"
+        lbl_seltrip["font"] = ft
+        lbl_seltrip["fg"] = "#333333"
+        lbl_seltrip["justify"] = "center"
+        lbl_seltrip["text"] = "Select Trip"
+        lbl_seltrip.place(x=5, y=45, width=100, height=30)
 
         self.combo_trip = ttk.Combobox(figure,
                                        state="readonly",
@@ -75,14 +63,14 @@ class TripCoordinatorPage:
         self.combo_trip.place(x=100, y=45, width=176, height=30)
         self.combo_trip.current(0)
 
-        GLabel_230 = tk.Label(figure)
+        lbl_trName = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_230["bg"] = "#e3e8cd"
-        GLabel_230["font"] = ft
-        GLabel_230["fg"] = "#333333"
-        GLabel_230["justify"] = "center"
-        GLabel_230["text"] = "Trip Name"
-        GLabel_230.place(x=5, y=90, width=100, height=30)
+        lbl_trName["bg"] = "#e3e8cd"
+        lbl_trName["font"] = ft
+        lbl_trName["fg"] = "#333333"
+        lbl_trName["justify"] = "center"
+        lbl_trName["text"] = "Trip Name"
+        lbl_trName.place(x=5, y=90, width=100, height=30)
 
         self.edit_trip_name = tk.Entry(figure)
         self.edit_trip_name["borderwidth"] = "1px"
@@ -93,14 +81,14 @@ class TripCoordinatorPage:
         self.edit_trip_name["text"] = ""
         self.edit_trip_name.place(x=100, y=90, width=176, height=30)
 
-        GLabel_766 = tk.Label(figure)
+        lbl_stDate = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_766["bg"] = "#e3e8cd"
-        GLabel_766["font"] = ft
-        GLabel_766["fg"] = "#333333"
-        GLabel_766["justify"] = "center"
-        GLabel_766["text"] = "Start Date"
-        GLabel_766.place(x=5, y=140, width=100, height=30)
+        lbl_stDate["bg"] = "#e3e8cd"
+        lbl_stDate["font"] = ft
+        lbl_stDate["fg"] = "#333333"
+        lbl_stDate["justify"] = "center"
+        lbl_stDate["text"] = "Start Date"
+        lbl_stDate.place(x=5, y=140, width=100, height=30)
 
         self.edit_start_date = tk.Entry(figure)
         self.edit_start_date["borderwidth"] = "1px"
@@ -111,23 +99,23 @@ class TripCoordinatorPage:
         self.edit_start_date["text"] = ""
         self.edit_start_date.place(x=100, y=140, width=176, height=30)
 
-        GLabel_trip_contact = tk.Label(figure)
+        lbl_ConNo = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_trip_contact["bg"] = "#e3e8cd"
-        GLabel_trip_contact["font"] = ft
-        GLabel_trip_contact["fg"] = "#333333"
-        GLabel_trip_contact["justify"] = "center"
-        GLabel_trip_contact["text"] = "Contact No"
-        GLabel_trip_contact.place(x=5, y=190, width=100, height=30)
+        lbl_ConNo["bg"] = "#e3e8cd"
+        lbl_ConNo["font"] = ft
+        lbl_ConNo["fg"] = "#333333"
+        lbl_ConNo["justify"] = "center"
+        lbl_ConNo["text"] = "Contact No"
+        lbl_ConNo.place(x=5, y=190, width=100, height=30)
 
-        self.edit_trip_contact = tk.Entry(figure)
-        self.edit_trip_contact["borderwidth"] = "1px"
+        self.edit_contact_no = tk.Entry(figure)
+        self.edit_contact_no["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_trip_contact["font"] = ft
-        self.edit_trip_contact["fg"] = "#333333"
-        self.edit_trip_contact["justify"] = "left"
-        self.edit_trip_contact["text"] = ""
-        self.edit_trip_contact.place(x=100, y=190, width=176, height=30)
+        self.edit_contact_no["font"] = ft
+        self.edit_contact_no["fg"] = "#333333"
+        self.edit_contact_no["justify"] = "left"
+        self.edit_contact_no["text"] = ""
+        self.edit_contact_no.place(x=100, y=190, width=176, height=30)
 
         btn_add_trip = tk.Button(figure)
         btn_add_trip["bg"] = "green"
@@ -149,14 +137,14 @@ class TripCoordinatorPage:
         btn_update_trip.place(x=180, y=250, width=70, height=30)
         btn_update_trip["command"] = self.btnUpdateTripHandler
 
-        GLabel_148 = tk.Label(figure)
+        lbl_stLoc = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_148["bg"] = "#e3e8cd"
-        GLabel_148["font"] = ft
-        GLabel_148["fg"] = "#333333"
-        GLabel_148["justify"] = "center"
-        GLabel_148["text"] = "Start Location"
-        GLabel_148.place(x=315, y=40, width=120, height=30)
+        lbl_stLoc["bg"] = "#e3e8cd"
+        lbl_stLoc["font"] = ft
+        lbl_stLoc["fg"] = "#333333"
+        lbl_stLoc["justify"] = "center"
+        lbl_stLoc["text"] = "Start Location"
+        lbl_stLoc.place(x=315, y=40, width=120, height=30)
 
         self.edit_leg_start_loc = tk.Entry(figure)
         self.edit_leg_start_loc["borderwidth"] = "1px"
@@ -167,49 +155,49 @@ class TripCoordinatorPage:
         self.edit_leg_start_loc["text"] = ""
         self.edit_leg_start_loc.place(x=440, y=40, width=180, height=30)
 
-        GLabel_275 = tk.Label(figure)
+        lbl_dest = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_275["bg"] = "#e3e8cd"
-        GLabel_275["font"] = ft
-        GLabel_275["fg"] = "#333333"
-        GLabel_275["justify"] = "center"
-        GLabel_275["text"] = "Destination"
-        GLabel_275.place(x=310, y=90, width=120, height=30)
+        lbl_dest["bg"] = "#e3e8cd"
+        lbl_dest["font"] = ft
+        lbl_dest["fg"] = "#333333"
+        lbl_dest["justify"] = "center"
+        lbl_dest["text"] = "Destination"
+        lbl_dest.place(x=310, y=90, width=120, height=30)
 
-        self.edit_leg_destination = tk.Entry(figure)
-        self.edit_leg_destination["borderwidth"] = "1px"
+        self.edit_leg_dest = tk.Entry(figure)
+        self.edit_leg_dest["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_leg_destination["font"] = ft
-        self.edit_leg_destination["fg"] = "#333333"
-        self.edit_leg_destination["justify"] = "left"
-        self.edit_leg_destination["text"] = ""
-        self.edit_leg_destination.place(x=440, y=90, width=180, height=30)
+        self.edit_leg_dest["font"] = ft
+        self.edit_leg_dest["fg"] = "#333333"
+        self.edit_leg_dest["justify"] = "left"
+        self.edit_leg_dest["text"] = ""
+        self.edit_leg_dest.place(x=440, y=90, width=180, height=30)
 
-        GLabel_229 = tk.Label(figure)
+        lbl_transCont = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_229["bg"] = "#e3e8cd"
-        GLabel_229["font"] = ft
-        GLabel_229["fg"] = "#333333"
-        GLabel_229["justify"] = "center"
-        GLabel_229["text"] = "Transport Contact"
-        GLabel_229.place(x=280, y=140, width=180, height=30)
+        lbl_transCont["bg"] = "#e3e8cd"
+        lbl_transCont["font"] = ft
+        lbl_transCont["fg"] = "#333333"
+        lbl_transCont["justify"] = "center"
+        lbl_transCont["text"] = "Transport Contact"
+        lbl_transCont.place(x=280, y=140, width=180, height=30)
 
-        self.edit_leg_tp_contact = tk.Entry(figure)
-        self.edit_leg_tp_contact["borderwidth"] = "1px"
+        self.edit_leg_trans_cont = tk.Entry(figure)
+        self.edit_leg_trans_cont["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_leg_tp_contact["font"] = ft
-        self.edit_leg_tp_contact["fg"] = "#333333"
-        self.edit_leg_tp_contact["justify"] = "left"
-        self.edit_leg_tp_contact["text"] = ""
-        self.edit_leg_tp_contact.place(x=440, y=140, width=180, height=30)
+        self.edit_leg_trans_cont["font"] = ft
+        self.edit_leg_trans_cont["fg"] = "#333333"
+        self.edit_leg_trans_cont["justify"] = "left"
+        self.edit_leg_trans_cont["text"] = ""
+        self.edit_leg_trans_cont.place(x=440, y=140, width=180, height=30)
 
-        GLabel_630 = tk.Label(figure)
+        lbl_transMod = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=10)
-        GLabel_630["font"] = ft
-        GLabel_630["fg"] = "#333333"
-        GLabel_630["justify"] = "center"
-        GLabel_630["text"] = "Transport Mode"
-        GLabel_630.place(x=320, y=190, width=120, height=30)
+        lbl_transMod["font"] = ft
+        lbl_transMod["fg"] = "#333333"
+        lbl_transMod["justify"] = "center"
+        lbl_transMod["text"] = "Transport Mode"
+        lbl_transMod.place(x=320, y=190, width=120, height=30)
 
         self.combo_tp_mode = ttk.Combobox(figure,
                                           state="readonly",
@@ -249,25 +237,23 @@ class TripCoordinatorPage:
         btn_print_invoice.place(x=800, y=390, width=180, height=50)
         btn_print_invoice["command"] = self.btnInvoicePrinter
 
-        # Passenger Management ------------------------------------------------------------------
-
-        GLabel_955 = tk.Label(figure)
+        lbl_PasMan = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=16)
-        GLabel_955["bg"] = "#e3e8cd"
-        GLabel_955["font"] = ft
-        GLabel_955["fg"] = "#800000"
-        GLabel_955["justify"] = "left"
-        GLabel_955["text"] = "Passenger Management"
-        GLabel_955.place(x=670, y=5, width=250, height=30)
+        lbl_PasMan["bg"] = "#e3e8cd"
+        lbl_PasMan["font"] = ft
+        lbl_PasMan["fg"] = "#800000"
+        lbl_PasMan["justify"] = "left"
+        lbl_PasMan["text"] = "Passenger Management"
+        lbl_PasMan.place(x=670, y=5, width=250, height=30)
 
-        GLabel_587 = tk.Label(figure)
+        lbl_SelTrp = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_587["bg"] = "#e3e8cd"
-        GLabel_587["font"] = ft
-        GLabel_587["fg"] = "#333333"
-        GLabel_587["justify"] = "center"
-        GLabel_587["text"] = "Select Trip"
-        GLabel_587.place(x=660, y=40, width=80, height=30)
+        lbl_SelTrp["bg"] = "#e3e8cd"
+        lbl_SelTrp["font"] = ft
+        lbl_SelTrp["fg"] = "#333333"
+        lbl_SelTrp["justify"] = "center"
+        lbl_SelTrp["text"] = "Select Trip"
+        lbl_SelTrp.place(x=660, y=40, width=80, height=30)
 
         self.combo_trip_select_passenger = ttk.Combobox(figure,
                                                         state="readonly",
@@ -277,32 +263,32 @@ class TripCoordinatorPage:
         self.combo_trip_select_passenger.place(x=750, y=40, width=176, height=30)
         self.combo_trip_select_passenger.current()
 
-        GLabel_564 = tk.Label(figure)
+        lbl_Name = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_564["bg"] = "#e3e8cd"
-        GLabel_564["font"] = ft
-        GLabel_564["fg"] = "#333333"
-        GLabel_564["justify"] = "center"
-        GLabel_564["text"] = "Name"
-        GLabel_564.place(x=650, y=90, width=70, height=30)
+        lbl_Name["bg"] = "#e3e8cd"
+        lbl_Name["font"] = ft
+        lbl_Name["fg"] = "#333333"
+        lbl_Name["justify"] = "center"
+        lbl_Name["text"] = "Name"
+        lbl_Name.place(x=650, y=90, width=70, height=30)
 
-        self.edit_passenger_name = tk.Entry(figure)
-        self.edit_passenger_name["borderwidth"] = "1px"
+        self.edit_pas_name = tk.Entry(figure)
+        self.edit_pas_name["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_passenger_name["font"] = ft
-        self.edit_passenger_name["fg"] = "#333333"
-        self.edit_passenger_name["justify"] = "left"
-        self.edit_passenger_name["text"] = ""
-        self.edit_passenger_name.place(x=750, y=90, width=176, height=30)
+        self.edit_pas_name["font"] = ft
+        self.edit_pas_name["fg"] = "#333333"
+        self.edit_pas_name["justify"] = "left"
+        self.edit_pas_name["text"] = ""
+        self.edit_pas_name.place(x=750, y=90, width=176, height=30)
 
-        GLabel_377 = tk.Label(figure)
+        lbl_Address = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_377["bg"] = "#e3e8cd"
-        GLabel_377["font"] = ft
-        GLabel_377["fg"] = "#333333"
-        GLabel_377["justify"] = "center"
-        GLabel_377["text"] = "Address"
-        GLabel_377.place(x=660, y=140, width=70, height=30)
+        lbl_Address["bg"] = "#e3e8cd"
+        lbl_Address["font"] = ft
+        lbl_Address["fg"] = "#333333"
+        lbl_Address["justify"] = "center"
+        lbl_Address["text"] = "Address"
+        lbl_Address.place(x=660, y=140, width=70, height=30)
 
         self.edit_address = tk.Entry(figure)
         self.edit_address["borderwidth"] = "1px"
@@ -313,14 +299,14 @@ class TripCoordinatorPage:
         self.edit_address["text"] = ""
         self.edit_address.place(x=750, y=140, width=176, height=30)
 
-        GLabel_639 = tk.Label(figure)
+        lbl_dob = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_639["bg"] = "#e3e8cd"
-        GLabel_639["font"] = ft
-        GLabel_639["fg"] = "#333333"
-        GLabel_639["justify"] = "center"
-        GLabel_639["text"] = "DOB"
-        GLabel_639.place(x=650, y=190, width=70, height=30)
+        lbl_dob["bg"] = "#e3e8cd"
+        lbl_dob["font"] = ft
+        lbl_dob["fg"] = "#333333"
+        lbl_dob["justify"] = "center"
+        lbl_dob["text"] = "DOB"
+        lbl_dob.place(x=650, y=190, width=70, height=30)
 
         self.edit_dob = tk.Entry(figure)
         self.edit_dob["borderwidth"] = "1px"
@@ -331,42 +317,41 @@ class TripCoordinatorPage:
         self.edit_dob["text"] = ""
         self.edit_dob.place(x=750, y=190, width=176, height=30)
 
-        GLabel_64 = tk.Label(figure)
+        lbl_contNo = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_64["bg"] = "#e3e8cd"
-        GLabel_64["font"] = ft
-        GLabel_64["fg"] = "#333333"
-        GLabel_64["justify"] = "center"
-        GLabel_64["text"] = "Contact No"
-        GLabel_64.place(x=660, y=240, width=80, height=30)
+        lbl_contNo["bg"] = "#e3e8cd"
+        lbl_contNo["font"] = ft
+        lbl_contNo["fg"] = "#333333"
+        lbl_contNo["justify"] = "center"
+        lbl_contNo["text"] = "Contact No"
+        lbl_contNo.place(x=660, y=240, width=80, height=30)
 
-        self.edit_passenger_contact = tk.Entry(figure)
-        self.edit_passenger_contact["borderwidth"] = "1px"
+        self.edit_pas_psw = tk.Entry(figure)
+        self.edit_pas_psw["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_passenger_contact["font"] = ft
-        self.edit_passenger_contact["fg"] = "#333333"
-        self.edit_passenger_contact["justify"] = "left"
-        self.edit_passenger_contact["text"] = ""
-        self.edit_passenger_contact.place(x=750, y=240, width=176, height=30)
+        self.edit_pas_psw["font"] = ft
+        self.edit_pas_psw["fg"] = "#333333"
+        self.edit_pas_psw["justify"] = "left"
+        self.edit_pas_psw["text"] = ""
+        self.edit_pas_psw.place(x=750, y=240, width=176, height=30)
 
-        GLabel_132 = tk.Label(figure)
+        lbl_pay = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_132["bg"] = "#e3e8cd"
-        GLabel_132["font"] = ft
-        GLabel_132["fg"] = "#333333"
-        GLabel_132["justify"] = "center"
-        GLabel_132["text"] = "Payment (£)"
-        GLabel_132.place(x=660, y=290, width=90, height=30)
+        lbl_pay["bg"] = "#e3e8cd"
+        lbl_pay["font"] = ft
+        lbl_pay["fg"] = "#333333"
+        lbl_pay["justify"] = "center"
+        lbl_pay["text"] = "Payment (GBP)"
+        lbl_pay.place(x=660, y=290, width=90, height=30)
 
-        self.edit_payment = tk.Entry(figure)
-        self.edit_payment["borderwidth"] = "1px"
+        self.edit_pay = tk.Entry(figure)
+        self.edit_pay["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_payment["font"] = ft
-        self.edit_payment["fg"] = "#333333"
-        self.edit_payment["justify"] = "left"
-        self.edit_payment["text"] = ""
-        self.edit_payment.place(x=750, y=290, width=177, height=30)
-
+        self.edit_pay["font"] = ft
+        self.edit_pay["fg"] = "#333333"
+        self.edit_pay["justify"] = "left"
+        self.edit_pay["text"] = ""
+        self.edit_pay.place(x=750, y=290, width=177, height=30)
 
         btn_add_passenger = tk.Button(figure)
         btn_add_passenger["bg"] = "green"
@@ -378,14 +363,14 @@ class TripCoordinatorPage:
         btn_add_passenger.place(x=750, y=340, width=180, height=30)
         btn_add_passenger["command"] = self.btnAddPassengerHandler
 
-        GLabel_823 = tk.Label(figure)
+        lbl_sel_Pas = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_823["bg"] = "#e3e8cd"
-        GLabel_823["font"] = ft
-        GLabel_823["fg"] = "#333333"
-        GLabel_823["justify"] = "center"
-        GLabel_823["text"] = "Select Passenger"
-        GLabel_823.place(x=10, y=340, width=130, height=30)
+        lbl_sel_Pas["bg"] = "#e3e8cd"
+        lbl_sel_Pas["font"] = ft
+        lbl_sel_Pas["fg"] = "#333333"
+        lbl_sel_Pas["justify"] = "center"
+        lbl_sel_Pas["text"] = "Select Passenger"
+        lbl_sel_Pas.place(x=10, y=340, width=130, height=30)
 
         self.combo_select_passenger = ttk.Combobox(figure,
                                                    state="readonly",
@@ -395,24 +380,24 @@ class TripCoordinatorPage:
         self.combo_select_passenger.place(x=150, y=340, width=230, height=30)
         self.combo_select_passenger.current()
 
-        btn_update_passenger = tk.Button(figure)
-        btn_update_passenger["bg"] = "blue"
+        btn_updte_pas = tk.Button(figure)
+        btn_updte_pas["bg"] = "blue"
         ft = tkf.Font(family='Arial', size=12)
-        btn_update_passenger["font"] = ft
-        btn_update_passenger["fg"] = "#FFFFFF"
-        btn_update_passenger["justify"] = "center"
-        btn_update_passenger["text"] = "Update Passenger"
-        btn_update_passenger.place(x=400, y=340, width=150, height=30)
-        btn_update_passenger["command"] = self.btnUpdatePassengerHandler
+        btn_updte_pas["font"] = ft
+        btn_updte_pas["fg"] = "#FFFFFF"
+        btn_updte_pas["justify"] = "center"
+        btn_updte_pas["text"] = "Update Passenger"
+        btn_updte_pas.place(x=400, y=340, width=150, height=30)
+        btn_updte_pas["command"] = self.btnUpdatePassengerHandler
 
     def btnAddTripHandler(self):
         trip_name = self.edit_trip_name.get()
         trip_date = datetime(*map(int, self.edit_start_date.get().split("-")))
-        trip_contact = self.edit_trip_contact.get()
+        trip_contact = self.edit_contact_no.get()
 
         new_trip: object = self.user.createTrip(trip_name,
-                                        trip_date,
-                                        trip_contact)
+                                                trip_date,
+                                                trip_contact)
         if new_trip is not None:
             self.TRIPS[new_trip.name] = new_trip
             self.combo_trip.configure(values=list(self.TRIPS.keys()))
@@ -423,7 +408,7 @@ class TripCoordinatorPage:
 
             self.edit_trip_name.delete(0, tk.END)
             self.edit_start_date.delete(0, tk.END)
-            self.edit_trip_contact.delete(0, tk.END)
+            self.edit_contact_no.delete(0, tk.END)
 
             print("Adding trip to " + new_trip.name + " successfull")
         else:
@@ -435,7 +420,7 @@ class TripCoordinatorPage:
 
         trip_name = self.edit_trip_name.get()
         trip_date = datetime(*map(int, self.edit_start_date.get().split("-")))
-        trip_contact = self.edit_trip_contact.get()
+        trip_contact = self.edit_contact_no.get()
 
         update_result = self.user.updateTrip(trip, trip_name, trip_date, trip_contact)
 
@@ -449,7 +434,7 @@ class TripCoordinatorPage:
 
             self.edit_trip_name.delete(0, tk.END)
             self.edit_start_date.delete(0, tk.END)
-            self.edit_trip_contact.delete(0, tk.END)
+            self.edit_contact_no.delete(0, tk.END)
 
         else:
             print("Update Failed")
@@ -457,8 +442,8 @@ class TripCoordinatorPage:
     def btnAddTripLegHandler(self):
 
         start_location = self.edit_leg_start_loc.get()
-        destination = self.edit_leg_destination.get()
-        transport_contact = self.edit_leg_tp_contact.get()
+        destination = self.edit_leg_dest.get()
+        transport_contact = self.edit_leg_trans_cont.get()
         transport_mode = ModeOfTravel[self.combo_tp_mode.get()]
 
         trip = self.TRIPS[self.combo_trip.get()]
@@ -473,8 +458,8 @@ class TripCoordinatorPage:
             print("Added Trip Leg Successfully for " + trip.name)
 
             self.edit_leg_start_loc.delete(0, tk.END)
-            self.edit_leg_destination.delete(0, tk.END)
-            self.edit_leg_tp_contact.delete(0, tk.END)
+            self.edit_leg_dest.delete(0, tk.END)
+            self.edit_leg_trans_cont.delete(0, tk.END)
             self.combo_trip.current(0)
             self.combo_tp_mode.current(0)
 
@@ -484,22 +469,18 @@ class TripCoordinatorPage:
     def btnAddPassengerHandler(self):
 
         trip = self.TRIPS[self.combo_trip_select_passenger.get()]
-        name = self.edit_passenger_name.get()
+        name = self.edit_pas_name.get()
         address = self.edit_address.get()
         dob = datetime(*map(int, self.edit_dob.get().split("-")))
-        contact = self.edit_passenger_contact.get()
+        contact = self.edit_pas_psw.get()
 
-        doc_type = self.edit_doc_type.get()
-        doc_id = self.edit_doc_id.get()
-
-        payment = self.edit_payment.get()
+        payment = self.edit_pay.get()
 
         new_passenger = self.user.createPassenger(trip,
                                                   name,
                                                   address,
                                                   dob,
                                                   contact,
-                                                  {doc_type, doc_id},
                                                   payment)
 
         if new_passenger is not None:
@@ -511,15 +492,11 @@ class TripCoordinatorPage:
             self.combo_select_passenger.current(0)
             self.combo_trip_select_passenger.current(0)
 
-            self.edit_passenger_name.delete(0, tk.END)
+            self.edit_pas_name.delete(0, tk.END)
             self.edit_address.delete(0, tk.END)
             self.edit_dob.delete(0, tk.END)
-            self.edit_passenger_contact.delete(0, tk.END)
-
-            self.edit_doc_type.delete(0, tk.END)
-            self.edit_doc_id.delete(0, tk.END)
-
-            self.edit_payment.delete(0, tk.END)
+            self.edit_pas_psw.delete(0, tk.END)
+            self.edit_pay.delete(0, tk.END)
 
         else:
             print("Created Passenger Failed")
@@ -527,20 +504,15 @@ class TripCoordinatorPage:
     def btnUpdatePassengerHandler(self):
 
         passenger = self.PASSENGERS[self.combo_select_passenger.get()]
-        name = self.edit_passenger_name.get()
+        name = self.edit_pas_name.get()
         address = self.edit_address.get()
         dob = datetime(*map(int, self.edit_dob.get().split("-")))
-        contact = self.edit_passenger_contact.get()
-
-        doc_type = self.edit_doc_type.get()
-        doc_id = self.edit_doc_id.get()
-
+        contact = self.edit_pas_psw.get()
         update_result = self.user.updatePassenger(passenger,
                                                   name,
                                                   address,
                                                   dob,
-                                                  contact,
-                                                  {doc_type, doc_id})
+                                                  contact)
 
         if update_result == 1:
             print("Updated Passenger " + passenger.name + " Successfully")
@@ -549,13 +521,10 @@ class TripCoordinatorPage:
             self.combo_select_passenger.current(0)
             self.combo_trip_select_passenger.current(0)
 
-            self.edit_passenger_name.delete(0, tk.END)
+            self.edit_pas_name.delete(0, tk.END)
             self.edit_address.delete(0, tk.END)
             self.edit_dob.delete(0, tk.END)
-            self.edit_passenger_contact.delete(0, tk.END)
-
-            self.edit_doc_type.delete(0, tk.END)
-            self.edit_doc_id.delete(0, tk.END)
+            self.edit_pas_psw.delete(0, tk.END)
 
         else:
             print("Update Failed")
@@ -570,7 +539,6 @@ class TripCoordinatorPage:
 
     def btnInvoicePrinter(self):
         print(self.user.printCoordinatorInvoice())
-
 
 
 if __name__ == "__main__":

@@ -1,39 +1,32 @@
 import tkinter as tk
 import tkinter.font as tkf
 from tkinter import ttk
-
-from src.Code.Administrator import Administrator
-from src.User_Interface.ManagerLogin import ManagerLogin
 from src.User_Interface.TripManagerPage import TripManagerPage
+from src.Coding.Administrator import Administrator
 from src.User_Interface.TripCoordinatorPage import TripCoordinatorPage
+from src.User_Interface.ManagerLogin import ManagerLogin
 
 
 class AdministratorPage:
 
     def __init__(self, figure, username, contact):
-
         self.MANAGERS = {"CHOOSE BELOW": None}
 
-        # user
         all_users = Administrator.SYSTEM_USERS
         self.user = None
 
-        # get the current user in the session
         for user in all_users:
             if user.name == username and user.contact == contact:
                 self.user = user
 
-        # if the user is not found
         if self.user is None:
             raise ModuleNotFoundError
 
         for manager in self.user.trip_managers:
             self.MANAGERS[manager.name] = manager
 
-        # setting title
         figure.title("Admin")
 
-        # setting window size
         figure["bg"] = "#e3e8cd"
         width = 800
         height = 400
@@ -51,14 +44,14 @@ class AdministratorPage:
         TitleLabel["text"] = "Manage Trip Page"
         TitleLabel.place(x=300, y=20, width=218, height=30)
 
-        GLabel_587 = tk.Label(figure)
+        SelManager = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_587["bg"] = "#e3e8cd"
-        GLabel_587["font"] = ft
-        GLabel_587["fg"] = "black"
-        GLabel_587["justify"] = "center"
-        GLabel_587["text"] = "Manager"
-        GLabel_587.place(x=215, y=70, width=160, height=30)
+        SelManager["bg"] = "#e3e8cd"
+        SelManager["font"] = ft
+        SelManager["fg"] = "black"
+        SelManager["justify"] = "center"
+        SelManager["text"] = "Manager"
+        SelManager.place(x=215, y=70, width=160, height=30)
 
         self.combo_select_manager = ttk.Combobox(figure,
                                                  state="readonly",
@@ -68,14 +61,14 @@ class AdministratorPage:
         self.combo_select_manager.place(x=350, y=70, width=176, height=30)
         self.combo_select_manager.current(0)
 
-        GLabel_564 = tk.Label(figure)
+        NameAdm = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_564["bg"] = "#e3e8cd"
-        GLabel_564["font"] = ft
-        GLabel_564["fg"] = "black"
-        GLabel_564["justify"] = "center"
-        GLabel_564["text"] = "Name"
-        GLabel_564.place(x=235, y=110, width=100, height=30)
+        NameAdm["bg"] = "#e3e8cd"
+        NameAdm["font"] = ft
+        NameAdm["fg"] = "black"
+        NameAdm["justify"] = "center"
+        NameAdm["text"] = "Name"
+        NameAdm.place(x=235, y=110, width=100, height=30)
 
         self.edit_manager_name = tk.Entry(figure)
         self.edit_manager_name["borderwidth"] = "1px"
@@ -86,23 +79,23 @@ class AdministratorPage:
         self.edit_manager_name["text"] = ""
         self.edit_manager_name.place(x=350, y=110, width=176, height=30)
 
-        GLabel_377 = tk.Label(figure)
+        PswAdm = tk.Label(figure)
         ft = tkf.Font(family='Arial', size=12)
-        GLabel_377["bg"] = "#e3e8cd"
-        GLabel_377["font"] = ft
-        GLabel_377["fg"] = "black"
-        GLabel_377["justify"] = "center"
-        GLabel_377["text"] = "Password"
-        GLabel_377.place(x=250, y=150, width=100, height=30)
+        PswAdm["bg"] = "#e3e8cd"
+        PswAdm["font"] = ft
+        PswAdm["fg"] = "black"
+        PswAdm["justify"] = "center"
+        PswAdm["text"] = "Password"
+        PswAdm.place(x=250, y=150, width=100, height=30)
 
-        self.edit_manager_contact = tk.Entry(figure)
-        self.edit_manager_contact["borderwidth"] = "1px"
+        self.edit_manager_psw = tk.Entry(figure)
+        self.edit_manager_psw["borderwidth"] = "1px"
         ft = tkf.Font(family='Arial', size=12)
-        self.edit_manager_contact["font"] = ft
-        self.edit_manager_contact["fg"] = "#008080"
-        self.edit_manager_contact["justify"] = "left"
-        self.edit_manager_contact["text"] = ""
-        self.edit_manager_contact.place(x=350, y=150, width=176, height=30)
+        self.edit_manager_psw["font"] = ft
+        self.edit_manager_psw["fg"] = "#008080"
+        self.edit_manager_psw["justify"] = "left"
+        self.edit_manager_psw["text"] = ""
+        self.edit_manager_psw.place(x=350, y=150, width=176, height=30)
 
         btn_manager_view = tk.Button(figure)
         btn_manager_view["bg"] = "#efefef"
@@ -167,7 +160,7 @@ class AdministratorPage:
 
     def btnAddManagerHandler(self):
         name = self.edit_manager_name.get()
-        contact = self.edit_manager_contact.get()
+        contact = self.edit_manager_psw.get()
 
         newManager = self.user.createTripManager(name, contact)
 
@@ -176,33 +169,26 @@ class AdministratorPage:
 
         print("Manager Created Successfully!!!")
         self.edit_manager_name.delete(0, tk.END)
-        self.edit_manager_contact.delete(0, tk.END)
-
-        # This will update the combo box
+        self.edit_manager_psw.delete(0, tk.END)
         self.combo_select_manager.configure(values=list(self.MANAGERS.keys()))
 
     def btnUpdateManagerHandler(self):
-
-        # code to find the manager object to update
         update_obj_name = self.combo_select_manager.get()
         update_object = self.MANAGERS[update_obj_name]
 
         new_name = self.edit_manager_name.get()
-        new_contact = self.edit_manager_contact.get()
+        new_contact = self.edit_manager_psw.get()
 
         update_result = self.user.updateManager(update_object, new_name, new_contact)
 
         if update_result == 1:
-            print("Update Successful!!!")
-
-            # Changing drop down dictionary
+            print("Updated Successfully!!!")
             self.MANAGERS[new_name] = self.MANAGERS.pop(update_obj_name)
             self.combo_select_manager.configure(values=list(self.MANAGERS.keys()))
 
-            # assigning default values
             self.combo_select_manager.current(0)
             self.edit_manager_name.delete(0, tk.END)
-            self.edit_manager_contact.delete(0, tk.END)
+            self.edit_manager_psw.delete(0, tk.END)
 
         else:
             print("Oops!!! Update Failed!!!")
@@ -218,14 +204,10 @@ class AdministratorPage:
             print("Deleted Successfully " + delete_obj_name)
             self.MANAGERS.pop(delete_obj_name)
             ManagerLogin.MANAGERS.remove(delete_object)
-
-            # updating combo box
             self.combo_select_manager.configure(values=list(self.MANAGERS.keys()))
-
-            # assigning default values
             self.combo_select_manager.current(0)
             self.edit_manager_name.delete(0, tk.END)
-            self.edit_manager_contact.delete(0, tk.END)
+            self.edit_manager_psw.delete(0, tk.END)
 
         else:
             print("Oops!!! Delete Manager Failed!!!")

@@ -10,11 +10,11 @@ class TripLeg:
         self.start_loc = start_loc
         self.destination = destination
         self.transport_contact = transport_contact
-        self.transport_mode = transport_mode
+        self.mode_of_travel = transport_mode
 
     def __str__(self) -> str:
         return_value = "Starting Location : " + self.start_loc + ", Destination : " + self.destination + \
-                       ", Transport : " + self.transport_contact + ", Transport Mode : " + self.transport_mode.value
+                       ", Transport : " + self.transport_contact + ", Transport Mode : " + self.mode_of_travel.value
 
         return return_value
 
